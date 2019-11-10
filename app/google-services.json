@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "775813065648",
+    "firebase_url": "https://triviagame-38a39.firebaseio.com",
+    "project_id": "triviagame-38a39",
+    "storage_bucket": "triviagame-38a39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775813065648:android:68d683cfcb57b924510475",
+        "android_client_info": {
+          "package_name": "com.example.triviagame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775813065648-o3l2pogo925q39odk5np0ggjdl7q61u1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi0M08ZKc03shmoFjrJ108Uk_WkRWJw2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775813065648-o3l2pogo925q39odk5np0ggjdl7q61u1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
