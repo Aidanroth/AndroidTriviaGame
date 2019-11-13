@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:padding="10dp"
-            android:text="question text"
+            android:text="@string/question_text"
             android:textAlignment="center"
             android:textSize="28sp" />
 
@@ -26,20 +26,19 @@
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="option1 text"
-            android:textAlignment="center"
-            android:textSize="20sp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            />
+            android:padding="10dp"
+            android:text="@string/option1_text"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="option2 text"
+            android:text="@string/option2_text"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_marginStart="10dp"
@@ -51,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="option3 text"
+            android:text="@string/option3_text"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_marginStart="10dp"
@@ -63,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="option4 text"
+            android:text="@string/option4_text"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_marginStart="10dp"

@@ -1,6 +1,6 @@
 package com.example.triviagame.Model;
 
-public class Question {
+public class Question {     // Class to hold data retrieved from FireBase
 
     public Question() {}
 

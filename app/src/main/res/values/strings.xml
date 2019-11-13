@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TriviaGame</string>
+    <string name="nav_button_text">Go to Question View</string>
+    <string name="option1_text">option 1</string>
+    <string name="option2_text">option 2</string>
+    <string name="option3_text">option 3</string>
+    <string name="option4_text">option 4</string>
+    <string name="question_text">question text</string>
+
+
 </resources>
