@@ -22,7 +22,6 @@ public class question_view extends AppCompatActivity {
     TextView questionText;
     Button button1, button2, button3, button4;
 
-
     public DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference(); //gets root of the FireBase JSON Tree
     public DatabaseReference childRef = rootRef.child("history_questions").child(String.valueOf(1));
 
@@ -56,6 +55,7 @@ public class question_view extends AppCompatActivity {
                 button3.setText(question.getOption3());
                 button4.setText(question.getOption4());
 
+                // button 1 click result logic
                 button1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -85,6 +85,113 @@ public class question_view extends AppCompatActivity {
                             }
                             else if(button4.getText().toString().equals(question.getAnswer())) {
                                 button4.setBackgroundColor(Color.GREEN);
+                            }
+
+                        }
+                    }
+                });
+
+                // button 2 click result logic
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (button2.getText().toString().equals(question.getAnswer())) { //if answer is correct
+                            button2.setBackgroundColor(Color.GREEN);
+
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    score++;
+                                    button2.setBackgroundColor(Color.parseColor("#03A9F4"));
+
+
+                                }
+                            },1500);
+
+                        }
+                        else {  //if wrong, make correct button turn green
+                            button2.setBackgroundColor(Color.RED);
+
+                            if(button1.getText().toString().equals(question.getAnswer())) {
+                                button2.setBackgroundColor(Color.GREEN);
+                            }
+                            else if(button3.getText().toString().equals(question.getAnswer())) {
+                                button3.setBackgroundColor(Color.GREEN);
+                            }
+                            else if(button4.getText().toString().equals(question.getAnswer())) {
+                                button4.setBackgroundColor(Color.GREEN);
+                            }
+
+                        }
+                    }
+                });
+
+                // button 3 click result logic
+                button3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (button3.getText().toString().equals(question.getAnswer())) { //if answer is correct
+                            button3.setBackgroundColor(Color.GREEN);
+
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    score++;
+                                    button3.setBackgroundColor(Color.parseColor("#03A9F4"));
+
+
+                                }
+                            },1500);
+
+                        }
+                        else {  //if wrong, make correct button turn green
+                            button3.setBackgroundColor(Color.RED);
+
+                            if(button1.getText().toString().equals(question.getAnswer())) {
+                                button2.setBackgroundColor(Color.GREEN);
+                            }
+                            else if(button2.getText().toString().equals(question.getAnswer())) {
+                                button3.setBackgroundColor(Color.GREEN);
+                            }
+                            else if(button4.getText().toString().equals(question.getAnswer())) {
+                                button4.setBackgroundColor(Color.GREEN);
+                            }
+
+                        }
+                    }
+                });
+
+                button4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (button4.getText().toString().equals(question.getAnswer())) { //if answer is correct
+                            button4.setBackgroundColor(Color.GREEN);
+
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    score++;
+                                    button4.setBackgroundColor(Color.parseColor("#03A9F4"));
+
+
+                                }
+                            },1500);
+
+                        }
+                        else {  //if wrong, make correct button turn green
+                            button4.setBackgroundColor(Color.RED);
+
+                            if(button1.getText().toString().equals(question.getAnswer())) {
+                                button2.setBackgroundColor(Color.GREEN);
+                            }
+                            else if(button2.getText().toString().equals(question.getAnswer())) {
+                                button3.setBackgroundColor(Color.GREEN);
+                            }
+                            else if(button3.getText().toString().equals(question.getAnswer())) {
+                                button3.setBackgroundColor(Color.GREEN);
                             }
 
                         }
