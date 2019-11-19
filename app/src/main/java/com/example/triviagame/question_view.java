@@ -163,6 +163,7 @@ public class question_view extends AppCompatActivity {
                     }
                 });
 
+                // button 4 click result logic
                 button4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
