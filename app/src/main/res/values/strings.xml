@@ -7,5 +7,21 @@
     <string name="option4_text">option 4</string>
     <string name="question_text">question text</string>
 
+    <string-array name="Difficulties">
+        <item>Ego Boost</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+
+    <string-array name="Mode">
+        <item>Single Player</item>
+        <item>Multiplayer</item>
+    </string-array>
+
+    <string-array name="Categories">
+        <item>History</item>
+        <item>Science</item>
+    </string-array>
 
 </resources>

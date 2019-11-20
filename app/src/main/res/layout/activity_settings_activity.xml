@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D3D3D3"
+    android:orientation="vertical"
+    tools:context=".settings_activity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D3D3D3"
+        android:gravity="center"
+        android:paddingBottom="30dp"
+        android:text="Settings Menu"
+        android:textColor="#000000"
+        android:textSize="42dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D3D3D3"
+        android:text="Difficulty"
+        android:textColor="#000000"
+        android:textSize="24dp"
+
+        />
+
+
+    <Spinner
+        android:id="@+id/spinner1"
+        style="@style/spinner_style"
+        android:layout_width="116dp"
+        android:layout_height="67dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#D3D3D3"
+        android:textColor="#000000"
+        android:text="Game Mode"
+        android:textSize="24dp" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        style="@style/spinner_style"
+        android:layout_width="116dp"
+        android:layout_height="67dp"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#D3D3D3"
+        android:textColor="#000000"
+        android:text="Categories"
+        android:textSize="24dp"/>
+
+    <Spinner
+        android:id="@+id/spinner3"
+        style="@style/spinner_style"
+        android:layout_width="116dp"
+        android:layout_height="67dp"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+
+</LinearLayout>
