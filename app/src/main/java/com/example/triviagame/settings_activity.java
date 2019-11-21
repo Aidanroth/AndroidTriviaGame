@@ -47,7 +47,7 @@ public class settings_activity extends AppCompatActivity implements AdapterView.
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
-        
+
             String text1 = parent.getItemAtPosition(position).toString() + " saved to settings";
             Toast.makeText(parent.getContext(), text1, Toast.LENGTH_SHORT).show();
 
