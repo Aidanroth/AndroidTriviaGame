@@ -1,5 +1,6 @@
 package com.example.triviagame.Model;
 
+
 public class Question {     // Class to hold data retrieved from FireBase
 
     public Question() {}
@@ -62,4 +63,5 @@ public class Question {     // Class to hold data retrieved from FireBase
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+
 }
