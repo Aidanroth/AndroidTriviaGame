@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".question_view">
+    tools:context=".QuestionActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,6 +63,18 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="@string/option4_text"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            />
+
+        <Button
+            android:id="@+id/buttonNextQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Next Question"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_marginStart="10dp"

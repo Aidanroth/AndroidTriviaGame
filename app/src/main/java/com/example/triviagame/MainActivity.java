@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         public void onClickQuestions(View view){
-            Intent questionIntent = new Intent(getBaseContext(),question_view.class);
+            Intent questionIntent = new Intent(getBaseContext(),QuestionActivity.class);
             startActivity(questionIntent);
         }
 
