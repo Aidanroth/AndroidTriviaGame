@@ -3,17 +3,15 @@ package com.example.triviagame;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import java.util.*;
 
-import com.example.triviagame.Model.MyApplication;
 import com.example.triviagame.Model.Question;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,10 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Vector;
 
-public class question_view extends AppCompatActivity {
+public class QuestionActivity extends AppCompatActivity {
 
     TextView questionText;
     Button button1, button2, button3, button4, buttonNextQ;
@@ -41,7 +37,7 @@ public class question_view extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question_view);
+        setContentView(R.layout.question_activity);
 
         getQuestions("science_questions");
 
