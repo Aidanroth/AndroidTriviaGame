@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TriviaGame</string>
+    <string name="app_name"></string>
     <string name="nav_button_text">Go to Question View</string>
     <string name="option1_text">option 1</string>
     <string name="option2_text">option 2</string>
