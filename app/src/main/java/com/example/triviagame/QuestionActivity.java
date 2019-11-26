@@ -137,7 +137,7 @@ public class QuestionActivity extends AppCompatActivity {
                     button2.setBackgroundColor(Color.RED);
 
                     if(button1.getText().toString().equals(question.getAnswer())) {
-                        button2.setBackgroundColor(Color.GREEN);
+                        button1.setBackgroundColor(Color.GREEN);
                     }
                     else if(button3.getText().toString().equals(question.getAnswer())) {
                         button3.setBackgroundColor(Color.GREEN);
@@ -175,10 +175,10 @@ public class QuestionActivity extends AppCompatActivity {
                     button3.setBackgroundColor(Color.RED);
 
                     if(button1.getText().toString().equals(question.getAnswer())) {
-                        button2.setBackgroundColor(Color.GREEN);
+                        button1.setBackgroundColor(Color.GREEN);
                     }
                     else if(button2.getText().toString().equals(question.getAnswer())) {
-                        button3.setBackgroundColor(Color.GREEN);
+                        button2.setBackgroundColor(Color.GREEN);
                     }
                     else if(button4.getText().toString().equals(question.getAnswer())) {
                         button4.setBackgroundColor(Color.GREEN);
@@ -212,10 +212,10 @@ public class QuestionActivity extends AppCompatActivity {
                     button4.setBackgroundColor(Color.RED);
 
                     if(button1.getText().toString().equals(question.getAnswer())) {
-                        button2.setBackgroundColor(Color.GREEN);
+                        button1.setBackgroundColor(Color.GREEN);
                     }
                     else if(button2.getText().toString().equals(question.getAnswer())) {
-                        button3.setBackgroundColor(Color.GREEN);
+                        button2.setBackgroundColor(Color.GREEN);
                     }
                     else if(button3.getText().toString().equals(question.getAnswer())) {
                         button3.setBackgroundColor(Color.GREEN);
@@ -231,7 +231,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         // The first time this method is called the array list is empty even though it should have been generated already.
         // thats why the check for empty is neccessary to prevent a crash but it also means when you start the game you
-        // see the defaul text values not the first question.
+        // see the default text values not the first question.
         if(!qVector.isEmpty()) {
 
             question = qVector.get(qNum);
