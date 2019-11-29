@@ -3,17 +3,15 @@ package com.example.triviagame;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.*;
 
-import com.example.triviagame.Model.MyApplication;
 import com.example.triviagame.Model.Question;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,8 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Vector;
+
 
 public class QuestionActivity extends AppCompatActivity {
 
@@ -43,33 +40,37 @@ public class QuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_activity);
 
-        getQuestions("science_questions");
+        if(getQuestions("science_questions")) {
 
-        button1 = findViewById(R.id.button1);
-        button2 = findViewById(R.id.button2);
-        button3 = findViewById(R.id.button3);
-        button4 = findViewById(R.id.button4);
-        buttonNextQ = findViewById(R.id.buttonNextQ);
+            button1 = findViewById(R.id.button1);
+            button2 = findViewById(R.id.button2);
+            button3 = findViewById(R.id.button3);
+            button4 = findViewById(R.id.button4);
+            buttonNextQ = findViewById(R.id.buttonNextQ);
 
-        questionText = findViewById(R.id.questionText);
+            questionText = findViewById(R.id.questionText);
 
-        refreshScreen();
+            refreshScreen();
 
-        updateData();
-
-
+            checkSelection();
+        }
     }
 
-    private void updateData() {
+    private void checkSelection() {
 
         buttonNextQ.setOnClickListener(new View.OnClickListener(){
+            @Override
             public void onClick(View view) {
-                if(qNum < 7) {
+                if(qNum < numQuestions) {
                     refreshScreen();
                     button1.setBackgroundColor(Color.parseColor("#008577"));
                     button2.setBackgroundColor(Color.parseColor("#008577"));
                     button3.setBackgroundColor(Color.parseColor("#008577"));
                     button4.setBackgroundColor(Color.parseColor("#008577"));
+                }
+                else {  // Go to results screen
+                    Intent resultsIntent = new Intent(QuestionActivity.this, ResultsActivity.class);
+                    startActivity(resultsIntent);
                 }
             }
         });
@@ -137,7 +138,7 @@ public class QuestionActivity extends AppCompatActivity {
                     button2.setBackgroundColor(Color.RED);
 
                     if(button1.getText().toString().equals(question.getAnswer())) {
-                        button2.setBackgroundColor(Color.GREEN);
+                        button1.setBackgroundColor(Color.GREEN);
                     }
                     else if(button3.getText().toString().equals(question.getAnswer())) {
                         button3.setBackgroundColor(Color.GREEN);
@@ -175,10 +176,10 @@ public class QuestionActivity extends AppCompatActivity {
                     button3.setBackgroundColor(Color.RED);
 
                     if(button1.getText().toString().equals(question.getAnswer())) {
-                        button2.setBackgroundColor(Color.GREEN);
+                        button1.setBackgroundColor(Color.GREEN);
                     }
                     else if(button2.getText().toString().equals(question.getAnswer())) {
-                        button3.setBackgroundColor(Color.GREEN);
+                        button2.setBackgroundColor(Color.GREEN);
                     }
                     else if(button4.getText().toString().equals(question.getAnswer())) {
                         button4.setBackgroundColor(Color.GREEN);
@@ -212,10 +213,10 @@ public class QuestionActivity extends AppCompatActivity {
                     button4.setBackgroundColor(Color.RED);
 
                     if(button1.getText().toString().equals(question.getAnswer())) {
-                        button2.setBackgroundColor(Color.GREEN);
+                        button1.setBackgroundColor(Color.GREEN);
                     }
                     else if(button2.getText().toString().equals(question.getAnswer())) {
-                        button3.setBackgroundColor(Color.GREEN);
+                        button2.setBackgroundColor(Color.GREEN);
                     }
                     else if(button3.getText().toString().equals(question.getAnswer())) {
                         button3.setBackgroundColor(Color.GREEN);
@@ -231,7 +232,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         // The first time this method is called the array list is empty even though it should have been generated already.
         // thats why the check for empty is neccessary to prevent a crash but it also means when you start the game you
-        // see the defaul text values not the first question.
+        // see the default text values not the first question.
         if(!qVector.isEmpty()) {
 
             question = qVector.get(qNum);
@@ -247,7 +248,7 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
 
-    public void getQuestions (String category) {
+    public Boolean getQuestions (String category) {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference(); //gets root of the FireBase JSON Tree
 
         for (int i = 1; i <= numQuestions; i++) {   // loop to go through all questions in a category. Will probably need to hardcode number of questions.
@@ -270,7 +271,10 @@ public class QuestionActivity extends AppCompatActivity {
             });
         }
         Collections.shuffle(qVector, new Random(5));
+
+        return true;
     }
+
 
 
 

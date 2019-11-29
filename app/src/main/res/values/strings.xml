@@ -23,5 +23,6 @@
         <item>History</item>
         <item>Science</item>
     </string-array>
+    <string name="title_activity_results">ResultsActivity</string>
 
 </resources>
