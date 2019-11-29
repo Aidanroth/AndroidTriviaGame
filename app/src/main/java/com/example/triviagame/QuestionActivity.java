@@ -66,10 +66,10 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(qNum < 7) {
                     refreshScreen();
-                    button1.setBackgroundColor(Color.LTGRAY);
-                    button2.setBackgroundColor(Color.LTGRAY);
-                    button3.setBackgroundColor(Color.LTGRAY);
-                    button4.setBackgroundColor(Color.LTGRAY);
+                    button1.setBackgroundColor(Color.parseColor("#008577"));
+                    button2.setBackgroundColor(Color.parseColor("#008577"));
+                    button3.setBackgroundColor(Color.parseColor("#008577"));
+                    button4.setBackgroundColor(Color.parseColor("#008577"));
                 }
             }
         });
