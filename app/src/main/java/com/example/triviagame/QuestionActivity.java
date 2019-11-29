@@ -29,6 +29,7 @@ public class QuestionActivity extends AppCompatActivity {
 
 
 
+
     ArrayList<Question> qVector = new ArrayList<>(50);
     int score = 0;
     int numQuestions = 7;
