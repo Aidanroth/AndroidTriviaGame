@@ -19,7 +19,18 @@
             android:padding="10dp"
             android:text="@string/question_text"
             android:textAlignment="center"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/begin_button"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:padding="10dp"
+            android:text="Click to Begin"
+            android:textAlignment="center"
+            android:textSize="28sp"/>
+
 
 
         <Button
@@ -31,7 +42,8 @@
             android:padding="10dp"
             android:text="@string/option1_text"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/button2"
@@ -43,6 +55,7 @@
             android:textSize="20sp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:visibility="invisible"
             />
 
         <Button
@@ -55,6 +68,7 @@
             android:textSize="20sp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:visibility="invisible"
             />
 
         <Button
@@ -67,6 +81,7 @@
             android:textSize="20sp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:visibility="invisible"
             />
 
         <Button
@@ -79,6 +94,7 @@
             android:textSize="20sp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:visibility="invisible"
             />
 
     </LinearLayout>

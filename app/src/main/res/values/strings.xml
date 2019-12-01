@@ -8,7 +8,6 @@
     <string name="question_text">question text</string>
 
     <string-array name="Difficulties">
-        <item>Ego Boost</item>
         <item>Easy</item>
         <item>Medium</item>
         <item>Hard</item>
