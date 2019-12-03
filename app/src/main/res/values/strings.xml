@@ -6,7 +6,7 @@
     <string name="option3_text">option 3</string>
     <string name="option4_text">option 4</string>
     <string name="question_text">question text</string>
-
+    <string name="remaining">Time Remaining</string>
 
     <string-array name="Difficulties">
         <item>Easy</item>
