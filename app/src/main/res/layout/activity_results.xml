@@ -25,7 +25,7 @@
         android:id="@+id/player_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="450"
+        android:text="Still To Be Determined"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#6500B9"
         android:textSize="84sp"
