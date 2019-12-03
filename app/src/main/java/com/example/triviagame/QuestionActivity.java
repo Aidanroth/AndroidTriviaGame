@@ -24,8 +24,9 @@ import java.util.ArrayList;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    TextView questionText;
-    Button button1, button2, button3, button4, buttonNextQ;
+    TextView questionText,player_score, current_score;
+    Button button1, button2, button3, button4, buttonNextQ, beginButton;
+    boolean first = true;
 
 
 
@@ -47,9 +48,10 @@ public class QuestionActivity extends AppCompatActivity {
             button2 = findViewById(R.id.button2);
             button3 = findViewById(R.id.button3);
             button4 = findViewById(R.id.button4);
+            beginButton = findViewById(R.id.begin_button);
             buttonNextQ = findViewById(R.id.buttonNextQ);
-
             questionText = findViewById(R.id.questionText);
+
 
             refreshScreen();
 
@@ -91,7 +93,7 @@ public class QuestionActivity extends AppCompatActivity {
                             score+=50;
                             updateScore(score);
                         }
-                    },1500);
+                    },300);
 
 
                 }
@@ -128,7 +130,7 @@ public class QuestionActivity extends AppCompatActivity {
                             updateScore(score);
 
                         }
-                    },1500);
+                    },300);
 
 
 
@@ -167,7 +169,7 @@ public class QuestionActivity extends AppCompatActivity {
                             updateScore(score);
 
                         }
-                    },1500);
+                    },300);
 
 
 
@@ -204,7 +206,7 @@ public class QuestionActivity extends AppCompatActivity {
                             score+=50;
                             updateScore(score);
                         }
-                    },1500);
+                    },300);
 
 
                 }
@@ -241,6 +243,26 @@ public class QuestionActivity extends AppCompatActivity {
             button3.setText(question.getOption3());
             button4.setText(question.getOption4());
             qNum++;
+        }
+
+        else if(first == true){
+            beginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    first = false;
+                    beginButton.setVisibility(View.INVISIBLE);
+                    refreshScreen();
+                    questionText.setVisibility(View.VISIBLE);
+                    button1.setVisibility(View.VISIBLE);
+                    button2.setVisibility(View.VISIBLE);
+                    button3.setVisibility(View.VISIBLE);
+                    button4.setVisibility(View.VISIBLE);
+                    buttonNextQ.setVisibility(View.VISIBLE);
+                    //player_score.setVisibility(View.VISIBLE);
+                    //current_score.setVisibility(View.VISIBLE);
+
+                }
+            });
         }
 
 

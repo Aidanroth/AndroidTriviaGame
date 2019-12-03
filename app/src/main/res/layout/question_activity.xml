@@ -20,7 +20,9 @@
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"
+    />
 
 
     <TextView
@@ -35,7 +37,8 @@
         app:layout_constraintBottom_toTopOf="@+id/button1"
         app:layout_constraintEnd_toStartOf="@+id/current_score"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionText" />
+        app:layout_constraintTop_toBottomOf="@+id/questionText"
+        />
 
     <TextView
         android:id="@+id/current_score"
@@ -50,7 +53,8 @@
         app:layout_constraintBottom_toTopOf="@+id/button1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/player_score"
-        app:layout_constraintTop_toBottomOf="@+id/questionText" />
+        app:layout_constraintTop_toBottomOf="@+id/questionText"
+      />
 
     <Button
         android:id="@+id/button1"
@@ -67,7 +71,22 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/begin_button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginBottom="24dp"
+        android:padding="10dp"
+        android:text="Click To Begin!"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNextQ"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/button2"
@@ -84,7 +103,8 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/button3"
@@ -101,7 +121,8 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/button4"
@@ -118,7 +139,9 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonNextQ"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        />
 
     <Button
         android:id="@+id/buttonNextQ"
@@ -136,7 +159,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
