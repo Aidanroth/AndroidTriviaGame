@@ -21,23 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //settingsButton = findViewById(R.id.SettingsButton);
-
-//        settingsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openSettings();
-//            }
-//        });
-
-    }
-
-//    public void openSettings(){
-//        Intent settings = new Intent(getBaseContext(), settings_activity.class);
-//        startActivity(settings);
-//    }
-
-
+        }
 
         public void onClickQuestions(View view){
             Intent questionIntent = new Intent(getBaseContext(),QuestionActivity.class);

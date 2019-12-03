@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -9,10 +10,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trivia Battle Game"
+        android:fontFamily="sans-serif-black"
+        android:text="Trivia Battle Bonanza "
+        android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#6500B9"
-        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,8 +24,9 @@
 
     <Button
         android:id="@+id/StartGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="225dp"
+        android:layout_height="52dp"
         android:layout_marginTop="279dp"
         android:onClick="onClickQuestions"
         android:text="Start Game!"
@@ -33,17 +37,17 @@
 
     <Button
         android:id="@+id/TestButton2"
-        android:layout_width="97dp"
-        android:layout_height="40dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="175dp"
+        android:layout_height="47dp"
         android:layout_marginStart="157dp"
-        android:layout_marginTop="365dp"
+        android:layout_marginTop="420dp"
         android:layout_marginEnd="157dp"
         android:onClick="onClickSettings"
         android:text="Settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
