@@ -24,9 +24,10 @@ import java.util.ArrayList;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    TextView questionText;
+    TextView questionText,player_score, current_score;
     Button button1, button2, button3, button4, buttonNextQ, beginButton;
     boolean first = true;
+
 
 
 
@@ -65,10 +66,10 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(qNum < numQuestions) {
                     refreshScreen();
-                    button1.setBackgroundColor(Color.LTGRAY);
-                    button2.setBackgroundColor(Color.LTGRAY);
-                    button3.setBackgroundColor(Color.LTGRAY);
-                    button4.setBackgroundColor(Color.LTGRAY);
+                    button1.setBackgroundColor(Color.parseColor("#008577"));
+                    button2.setBackgroundColor(Color.parseColor("#008577"));
+                    button3.setBackgroundColor(Color.parseColor("#008577"));
+                    button4.setBackgroundColor(Color.parseColor("#008577"));
                 }
                 else {  // Go to results screen
                     Intent resultsIntent = new Intent(QuestionActivity.this, ResultsActivity.class);
@@ -84,16 +85,15 @@ public class QuestionActivity extends AppCompatActivity {
                 if (button1.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button1.setBackgroundColor(Color.GREEN);
 
+
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            score++;
-                            // button1.setBackgroundColor(Color.parseColor("#03A9F4"));
-
-
+                            score+=50;
+                            updateScore(score);
                         }
-                    },1500);
+                    },300);
 
 
                 }
@@ -121,16 +121,16 @@ public class QuestionActivity extends AppCompatActivity {
                 if (button2.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button2.setBackgroundColor(Color.GREEN);
 
+
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            score++;
-                            //   button2.setBackgroundColor(Color.parseColor("#03A9F4"));
-
+                            score+=50;
+                            updateScore(score);
 
                         }
-                    },1500);
+                    },300);
 
 
 
@@ -160,16 +160,16 @@ public class QuestionActivity extends AppCompatActivity {
                 if (button3.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button3.setBackgroundColor(Color.GREEN);
 
+
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            score++;
-                            // button3.setBackgroundColor(Color.parseColor("#03A9F4"));
-
+                            score+=50;
+                            updateScore(score);
 
                         }
-                    },1500);
+                    },300);
 
 
 
@@ -198,16 +198,15 @@ public class QuestionActivity extends AppCompatActivity {
                 if (button4.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button4.setBackgroundColor(Color.GREEN);
 
+
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            score++;
-                            // button4.setBackgroundColor(Color.parseColor("#03A9F4"));
-
-
+                            score+=50;
+                            updateScore(score);
                         }
-                    },1500);
+                    },300);
 
 
                 }
@@ -259,6 +258,9 @@ public class QuestionActivity extends AppCompatActivity {
                     button3.setVisibility(View.VISIBLE);
                     button4.setVisibility(View.VISIBLE);
                     buttonNextQ.setVisibility(View.VISIBLE);
+                    //player_score.setVisibility(View.VISIBLE);
+                    //current_score.setVisibility(View.VISIBLE);
+
                 }
             });
         }
@@ -293,7 +295,11 @@ public class QuestionActivity extends AppCompatActivity {
 
         return true;
     }
-
+    public void updateScore(int score){
+        String newScore = String.valueOf(score);
+        TextView textView = (TextView) findViewById(R.id.current_score);
+        textView.setText(newScore);
+    }
 
 
 
