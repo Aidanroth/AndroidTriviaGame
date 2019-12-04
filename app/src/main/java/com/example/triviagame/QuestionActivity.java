@@ -376,7 +376,6 @@ public class QuestionActivity extends AppCompatActivity {
                     mTextViewCountDown.setVisibility(View.VISIBLE);
                     player_score.setVisibility(View.VISIBLE);
                     current_score.setVisibility(View.VISIBLE);
-
                     button1.setClickable(true);
                     button2.setClickable(true);
                     button3.setClickable(true);
