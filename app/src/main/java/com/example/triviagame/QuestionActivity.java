@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import android.os.CountDownTimer;
 
 
 public class QuestionActivity extends AppCompatActivity {
@@ -31,19 +32,25 @@ public class QuestionActivity extends AppCompatActivity {
     public static final String MODE = "mode";
     public static final String SHARED_PREFS = "sharedPrefs";
 
+    private long START_TIME_IN_MILLIS = 0;
+
     SharedPreferences sharedpreferences;
     TextView questionText,player_score, current_score;
     Button button1, button2, button3, button4, buttonNextQ, beginButton;
     boolean first = true;
-
-
-
 
     ArrayList<Question> qVector = new ArrayList<>(50);
     int score = 0;
     int numQuestions = 7;
     int qNum = 0;
     Question question = new Question();
+
+    private CountDownTimer mCountDownTimer;
+    private TextView mTextViewCountDown;
+
+    private boolean mTimerRunning;
+    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,20 @@ public class QuestionActivity extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         String cat = sharedpreferences.getString(CATT, "Science");
+        String Diff = sharedpreferences.getString(DIFF, "Easy");
+
+        if(Diff.equals("Easy")){
+            START_TIME_IN_MILLIS = 30000;
+            mTimeLeftInMillis = 30000;
+        }
+        else if(Diff.equals("Medium")){
+            START_TIME_IN_MILLIS = 20000;
+            mTimeLeftInMillis = 20000;
+        }
+        else if(Diff.equals("Hard")){
+            START_TIME_IN_MILLIS = 10000;
+            mTimeLeftInMillis = 10000;
+        }
 
         if(cat.equals("History")){
             cat = "history_questions";
@@ -61,6 +82,8 @@ public class QuestionActivity extends AppCompatActivity {
             cat = "science_questions";
             numQuestions = 7;
         }
+
+        mTextViewCountDown = findViewById(R.id.text_view_countdown);
 
         if(getQuestions(cat)) {
 
@@ -74,8 +97,8 @@ public class QuestionActivity extends AppCompatActivity {
             player_score = findViewById(R.id.player_score);
             current_score = findViewById(R.id.current_score);
 
+            begin();
 
-            refreshScreen();
 
             checkSelection();
         }
@@ -87,6 +110,9 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(qNum < numQuestions) {
+
+                    mCountDownTimer.onFinish();
+                    resetTimer();
                     refreshScreen();
                     button1.setBackgroundColor(Color.parseColor("#008577"));
                     button2.setBackgroundColor(Color.parseColor("#008577"));
@@ -106,6 +132,13 @@ public class QuestionActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                pauseTimer();
+                button1.setClickable(false);
+                button2.setClickable(false);
+                button3.setClickable(false);
+                button4.setClickable(false);
+                buttonNextQ.setClickable(true);
                 if (button1.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button1.setBackgroundColor(Color.GREEN);
 
@@ -142,6 +175,12 @@ public class QuestionActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pauseTimer();
+                button1.setClickable(false);
+                button2.setClickable(false);
+                button3.setClickable(false);
+                button4.setClickable(false);
+                buttonNextQ.setClickable(true);
                 if (button2.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button2.setBackgroundColor(Color.GREEN);
 
@@ -181,6 +220,12 @@ public class QuestionActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pauseTimer();
+                button1.setClickable(false);
+                button2.setClickable(false);
+                button3.setClickable(false);
+                button4.setClickable(false);
+                buttonNextQ.setClickable(true);
                 if (button3.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button3.setBackgroundColor(Color.GREEN);
 
@@ -219,6 +264,12 @@ public class QuestionActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pauseTimer();
+                button1.setClickable(false);
+                button2.setClickable(false);
+                button3.setClickable(false);
+                button4.setClickable(false);
+                buttonNextQ.setClickable(true);
                 if (button4.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button4.setBackgroundColor(Color.GREEN);
 
@@ -258,6 +309,12 @@ public class QuestionActivity extends AppCompatActivity {
         // The first time this method is called the array list is empty even though it should have been generated already.
         // thats why the check for empty is neccessary to prevent a crash but it also means when you start the game you
         // see the default text values not the first question.
+
+//        if(first != true) {
+//            startTimer();
+//        }
+        startTimer();
+
         if(!qVector.isEmpty()) {
 
             question = qVector.get(qNum);
@@ -267,29 +324,69 @@ public class QuestionActivity extends AppCompatActivity {
             button3.setText(question.getOption3());
             button4.setText(question.getOption4());
             qNum++;
+            button1.setClickable(true);
+            button2.setClickable(true);
+            button3.setClickable(true);
+            button4.setClickable(true);
+            buttonNextQ.setClickable(false);
         }
 
-        else if(first == true){
+//        else if(first == true){
+//            beginButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    first = false;
+//                    beginButton.setVisibility(View.INVISIBLE);
+//                    refreshScreen();
+//                    questionText.setVisibility(View.VISIBLE);
+//                    button1.setVisibility(View.VISIBLE);
+//                    button2.setVisibility(View.VISIBLE);
+//                    button3.setVisibility(View.VISIBLE);
+//                    button4.setVisibility(View.VISIBLE);
+//                    buttonNextQ.setVisibility(View.VISIBLE);
+//                    mTextViewCountDown.setVisibility(View.VISIBLE);
+//                    player_score.setVisibility(View.VISIBLE);
+//                    current_score.setVisibility(View.VISIBLE);
+//                    //startTimer();
+//                    button1.setClickable(true);
+//                    button2.setClickable(true);
+//                    button3.setClickable(true);
+//                    button4.setClickable(true);
+//
+//                }
+//            });
+//        }
+
+    }
+
+    public void begin(){
+         if(first == true){
             beginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     first = false;
                     beginButton.setVisibility(View.INVISIBLE);
-                    refreshScreen();
+
                     questionText.setVisibility(View.VISIBLE);
                     button1.setVisibility(View.VISIBLE);
                     button2.setVisibility(View.VISIBLE);
                     button3.setVisibility(View.VISIBLE);
                     button4.setVisibility(View.VISIBLE);
                     buttonNextQ.setVisibility(View.VISIBLE);
+                    mTextViewCountDown.setVisibility(View.VISIBLE);
                     player_score.setVisibility(View.VISIBLE);
                     current_score.setVisibility(View.VISIBLE);
+                    button1.setClickable(true);
+                    button2.setClickable(true);
+                    button3.setClickable(true);
+                    button4.setClickable(true);
+                    buttonNextQ.setClickable(false);
+
+                    refreshScreen();
 
                 }
             });
         }
-
-
     }
 
 
@@ -325,6 +422,51 @@ public class QuestionActivity extends AppCompatActivity {
         textView.setText(newScore);
     }
 
+
+    private void startTimer() {
+
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 500) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                mTimerRunning = false;
+                button1.setClickable(false);
+                button2.setClickable(false);
+                button3.setClickable(false);
+                button4.setClickable(false);
+
+            }
+        }.start();
+
+        mTimerRunning = true;
+
+    }
+
+    private void pauseTimer() {
+        mCountDownTimer.cancel();
+        mTimerRunning = false;
+
+    }
+
+    private void resetTimer() {
+        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+        updateCountDownText();
+
+    }
+
+    private void updateCountDownText() {
+
+        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d", seconds);
+
+        mTextViewCountDown.setText(timeLeftFormatted);
+    }
 
 
 } // End class

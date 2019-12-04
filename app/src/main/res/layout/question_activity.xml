@@ -24,6 +24,19 @@
         android:visibility="invisible"
     />
 
+    <TextView
+        android:id="@+id/text_view_countdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/black"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/button1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/player_score"
+        app:layout_constraintTop_toBottomOf="@+id/questionText"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/player_score"
@@ -82,15 +95,14 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="240dp"
         android:padding="10dp"
         android:text="Click To Begin!"
-        android:textColor="#000000"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="28sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNextQ"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
