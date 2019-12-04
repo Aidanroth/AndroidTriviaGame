@@ -3,7 +3,9 @@ package com.example.triviagame;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +26,12 @@ import java.util.ArrayList;
 
 public class QuestionActivity extends AppCompatActivity {
 
+    public static final String DIFF = "diff";
+    public static final String CATT = "catt";
+    public static final String MODE = "mode";
+    public static final String SHARED_PREFS = "sharedPrefs";
+
+    SharedPreferences sharedpreferences;
     TextView questionText,player_score, current_score;
     Button button1, button2, button3, button4, buttonNextQ, beginButton;
     boolean first = true;
@@ -42,7 +50,19 @@ public class QuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_activity);
 
-        if(getQuestions("science_questions")) {
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        String cat = sharedpreferences.getString(CATT, "Science");
+
+        if(cat.equals("History")){
+            cat = "history_questions";
+            numQuestions = 2;
+        }
+        else if(cat.equals("Science")){
+            cat = "science_questions";
+            numQuestions = 7;
+        }
+
+        if(getQuestions(cat)) {
 
             button1 = findViewById(R.id.button1);
             button2 = findViewById(R.id.button2);
