@@ -71,6 +71,8 @@ public class QuestionActivity extends AppCompatActivity {
             beginButton = findViewById(R.id.begin_button);
             buttonNextQ = findViewById(R.id.buttonNextQ);
             questionText = findViewById(R.id.questionText);
+            player_score = findViewById(R.id.player_score);
+            current_score = findViewById(R.id.current_score);
 
 
             refreshScreen();
@@ -280,8 +282,8 @@ public class QuestionActivity extends AppCompatActivity {
                     button3.setVisibility(View.VISIBLE);
                     button4.setVisibility(View.VISIBLE);
                     buttonNextQ.setVisibility(View.VISIBLE);
-                    //player_score.setVisibility(View.VISIBLE);
-                    //current_score.setVisibility(View.VISIBLE);
+                    player_score.setVisibility(View.VISIBLE);
+                    current_score.setVisibility(View.VISIBLE);
 
                 }
             });

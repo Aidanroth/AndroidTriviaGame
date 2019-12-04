@@ -38,6 +38,7 @@
         app:layout_constraintEnd_toStartOf="@+id/current_score"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionText"
+        android:visibility="invisible"
         />
 
     <TextView
@@ -54,6 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/player_score"
         app:layout_constraintTop_toBottomOf="@+id/questionText"
+        android:visibility="invisible"
       />
 
     <Button
