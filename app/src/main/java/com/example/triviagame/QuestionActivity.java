@@ -32,7 +32,7 @@ public class QuestionActivity extends AppCompatActivity {
     public static final String MODE = "mode";
     public static final String SHARED_PREFS = "sharedPrefs";
 
-    private long START_TIME_IN_MILLIS;
+    private long START_TIME_IN_MILLIS = 0;
 
     SharedPreferences sharedpreferences;
     TextView questionText,player_score, current_score;
@@ -63,12 +63,15 @@ public class QuestionActivity extends AppCompatActivity {
 
         if(Diff.equals("Easy")){
             START_TIME_IN_MILLIS = 30000;
+            mTimeLeftInMillis = 30000;
         }
         else if(Diff.equals("Medium")){
             START_TIME_IN_MILLIS = 20000;
+            mTimeLeftInMillis = 20000;
         }
         else if(Diff.equals("Hard")){
             START_TIME_IN_MILLIS = 10000;
+            mTimeLeftInMillis = 10000;
         }
 
         if(cat.equals("History")){
@@ -79,6 +82,8 @@ public class QuestionActivity extends AppCompatActivity {
             cat = "science_questions";
             numQuestions = 7;
         }
+
+        mTextViewCountDown = findViewById(R.id.text_view_countdown);
 
         if(getQuestions(cat)) {
 
@@ -91,9 +96,9 @@ public class QuestionActivity extends AppCompatActivity {
             questionText = findViewById(R.id.questionText);
             player_score = findViewById(R.id.player_score);
             current_score = findViewById(R.id.current_score);
-            mTextViewCountDown = findViewById(R.id.text_view_countdown);
 
-            refreshScreen();
+            begin();
+
 
             checkSelection();
         }
@@ -127,11 +132,13 @@ public class QuestionActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 pauseTimer();
                 button1.setClickable(false);
                 button2.setClickable(false);
                 button3.setClickable(false);
                 button4.setClickable(false);
+                buttonNextQ.setClickable(true);
                 if (button1.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button1.setBackgroundColor(Color.GREEN);
 
@@ -173,6 +180,7 @@ public class QuestionActivity extends AppCompatActivity {
                 button2.setClickable(false);
                 button3.setClickable(false);
                 button4.setClickable(false);
+                buttonNextQ.setClickable(true);
                 if (button2.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button2.setBackgroundColor(Color.GREEN);
 
@@ -217,6 +225,7 @@ public class QuestionActivity extends AppCompatActivity {
                 button2.setClickable(false);
                 button3.setClickable(false);
                 button4.setClickable(false);
+                buttonNextQ.setClickable(true);
                 if (button3.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button3.setBackgroundColor(Color.GREEN);
 
@@ -260,6 +269,7 @@ public class QuestionActivity extends AppCompatActivity {
                 button2.setClickable(false);
                 button3.setClickable(false);
                 button4.setClickable(false);
+                buttonNextQ.setClickable(true);
                 if (button4.getText().toString().equals(question.getAnswer())) { //if answer is correct
                     button4.setBackgroundColor(Color.GREEN);
 
@@ -318,15 +328,45 @@ public class QuestionActivity extends AppCompatActivity {
             button2.setClickable(true);
             button3.setClickable(true);
             button4.setClickable(true);
+            buttonNextQ.setClickable(false);
         }
 
-        else if(first == true){
+//        else if(first == true){
+//            beginButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    first = false;
+//                    beginButton.setVisibility(View.INVISIBLE);
+//                    refreshScreen();
+//                    questionText.setVisibility(View.VISIBLE);
+//                    button1.setVisibility(View.VISIBLE);
+//                    button2.setVisibility(View.VISIBLE);
+//                    button3.setVisibility(View.VISIBLE);
+//                    button4.setVisibility(View.VISIBLE);
+//                    buttonNextQ.setVisibility(View.VISIBLE);
+//                    mTextViewCountDown.setVisibility(View.VISIBLE);
+//                    player_score.setVisibility(View.VISIBLE);
+//                    current_score.setVisibility(View.VISIBLE);
+//                    //startTimer();
+//                    button1.setClickable(true);
+//                    button2.setClickable(true);
+//                    button3.setClickable(true);
+//                    button4.setClickable(true);
+//
+//                }
+//            });
+//        }
+
+    }
+
+    public void begin(){
+         if(first == true){
             beginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     first = false;
                     beginButton.setVisibility(View.INVISIBLE);
-                    refreshScreen();
+
                     questionText.setVisibility(View.VISIBLE);
                     button1.setVisibility(View.VISIBLE);
                     button2.setVisibility(View.VISIBLE);
@@ -336,19 +376,18 @@ public class QuestionActivity extends AppCompatActivity {
                     mTextViewCountDown.setVisibility(View.VISIBLE);
                     player_score.setVisibility(View.VISIBLE);
                     current_score.setVisibility(View.VISIBLE);
-                    //startTimer();
+
                     button1.setClickable(true);
                     button2.setClickable(true);
                     button3.setClickable(true);
                     button4.setClickable(true);
+                    buttonNextQ.setClickable(false);
+
+                    refreshScreen();
 
                 }
             });
         }
-
-
-
-
     }
 
 
@@ -386,18 +425,6 @@ public class QuestionActivity extends AppCompatActivity {
 
 
     private void startTimer() {
-        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        String Diff = sharedpreferences.getString(DIFF, "Easy");
-
-        if(Diff.equals("Easy")){
-            START_TIME_IN_MILLIS = 30000;
-        }
-        else if(Diff.equals("Medium")){
-            START_TIME_IN_MILLIS = 20000;
-        }
-        else if(Diff.equals("Hard")){
-            START_TIME_IN_MILLIS = 10000;
-        }
 
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 500) {
             @Override
