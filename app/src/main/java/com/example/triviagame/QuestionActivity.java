@@ -271,20 +271,13 @@ public class QuestionActivity extends AppCompatActivity {
                         public void onTick(long millisUntilFinished) {
                             timerView.setText("Time Remaining: " + millisUntilFinished / 1000);
                             if(qNum != 1){
+                                timerView.setText("");
                                 cancel();
                             }
                         }
-
                         public void onFinish() {
-                            if(qNum >= numQuestions) {
-                                Intent resultsIntent = new Intent(QuestionActivity.this, ResultsActivity.class);
-                                startActivity(resultsIntent);
-                            }
-                            else{
                                 refreshScreen();
                                 countDownTimer.start();
-                            }
-
                         }
                     }.start();
 
