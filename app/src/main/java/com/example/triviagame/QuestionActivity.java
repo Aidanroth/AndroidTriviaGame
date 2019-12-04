@@ -25,16 +25,14 @@ import java.util.ArrayList;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    TextView questionText,player_score, current_score,timerView;
+
+    TextView questionText,player_score, current_score;
     Button button1, button2, button3, button4, buttonNextQ, beginButton;
     boolean first = true;
-
-
     ArrayList<Question> qVector = new ArrayList<>(50);
     int score = 0;
     int numQuestions = 7;
     int qNum = 0;
-    CountDownTimer countDownTimer;
     Question question = new Question();
 
     @Override
@@ -42,8 +40,8 @@ public class QuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_activity);
 
-        if(getQuestions("science_questions")) {
 
+        if(getQuestions("science_questions")) {
             button1 = findViewById(R.id.button1);
             button2 = findViewById(R.id.button2);
             button3 = findViewById(R.id.button3);
@@ -53,15 +51,12 @@ public class QuestionActivity extends AppCompatActivity {
             questionText = findViewById(R.id.questionText);
             player_score = findViewById(R.id.player_score);
             current_score = findViewById(R.id.current_score);
-            timerView = findViewById(R.id.timerView);
-
-
-
 
             refreshScreen();
 
             checkSelection();
         }
+
     }
 
     private void checkSelection() {
@@ -69,18 +64,20 @@ public class QuestionActivity extends AppCompatActivity {
         buttonNextQ.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+
                 if(qNum < numQuestions) {
                     refreshScreen();
                     button1.setBackgroundColor(Color.parseColor("#008577"));
                     button2.setBackgroundColor(Color.parseColor("#008577"));
                     button3.setBackgroundColor(Color.parseColor("#008577"));
                     button4.setBackgroundColor(Color.parseColor("#008577"));
-                    createTimer();
+
                 }
                 else {  // Go to results screen
                     Intent resultsIntent = new Intent(QuestionActivity.this, ResultsActivity.class);
                     startActivity(resultsIntent);
                 }
+
             }
         });
 
@@ -236,11 +233,11 @@ public class QuestionActivity extends AppCompatActivity {
 
 
     private void refreshScreen() {
-
         // The first time this method is called the array list is empty even though it should have been generated already.
         // thats why the check for empty is neccessary to prevent a crash but it also means when you start the game you
         // see the default text values not the first question.
         if(!qVector.isEmpty()) {
+
 
             question = qVector.get(qNum);
             questionText.setText(question.getQuestion());
@@ -267,19 +264,6 @@ public class QuestionActivity extends AppCompatActivity {
                     player_score.setVisibility(View.VISIBLE);
                     current_score.setVisibility(View.VISIBLE);
 
-                    countDownTimer = new CountDownTimer(11000, 1000) {
-                        public void onTick(long millisUntilFinished) {
-                            timerView.setText("Time Remaining: " + millisUntilFinished / 1000);
-                            if(qNum != 1){
-                                timerView.setText("");
-                                cancel();
-                            }
-                        }
-                        public void onFinish() {
-                                refreshScreen();
-                                countDownTimer.start();
-                        }
-                    }.start();
 
                 }
 
@@ -322,27 +306,11 @@ public class QuestionActivity extends AppCompatActivity {
         textView.setText(newScore);
     }
 
-    public void createTimer(){
-        countDownTimer = new CountDownTimer(11000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                timerView.setText("Time Remaining: " + millisUntilFinished / 1000);
-            }
 
-            public void onFinish() {
-                if(qNum >= numQuestions) {
-                    Intent resultsIntent = new Intent(QuestionActivity.this, ResultsActivity.class);
-                    startActivity(resultsIntent);
-                }
-                else{
-                    refreshScreen();
-                    countDownTimer.start();
-                }
-
-            }
-        }.start();
-    }
+}
 
 
 
 
-} // End class
+
+ // End class
