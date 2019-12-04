@@ -11,7 +11,9 @@ import android.widget.Button;
 
 public class ResultsActivity extends AppCompatActivity {
 
-    //Button menuButton;
+    private TextView playerScoreValue;
+    public static final String playerScore = "not working";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,18 +21,16 @@ public class ResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results);
 
         setContentView(R.layout.activity_results);
-        TextView textView = (TextView) findViewById(R.id.current_score);
-        //textView.setText();   // will need to get score variable from QuestionActivity to display here.
-
-        //menuButton = findViewById(R.id.menuButton);
-
+        playerScoreValue = findViewById(R.id.player_score);
+        Intent newIntent = getIntent();
+        String score = newIntent.getStringExtra(ResultsActivity.playerScore);
+        playerScoreValue.setText(score);
     }
-
+    
 
     public void onClickMenu(View view) {
         Intent menuIntent = new Intent(this, MainActivity.class);
         startActivity(menuIntent);
     }
-
 
 }

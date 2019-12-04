@@ -73,6 +73,8 @@ public class QuestionActivity extends AppCompatActivity {
                 }
                 else {  // Go to results screen
                     Intent resultsIntent = new Intent(QuestionActivity.this, ResultsActivity.class);
+                    String newScore = String.valueOf(score);
+                    resultsIntent.putExtra(ResultsActivity.playerScore, newScore);
                     startActivity(resultsIntent);
                 }
             }
