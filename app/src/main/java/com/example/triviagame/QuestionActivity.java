@@ -44,6 +44,7 @@ public class QuestionActivity extends AppCompatActivity {
     int numQuestions = 7;
     int qNum = 0;
     Question question = new Question();
+    String difficulty;
 
     private CountDownTimer mCountDownTimer;
     private TextView mTextViewCountDown;
@@ -60,6 +61,7 @@ public class QuestionActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         String cat = sharedpreferences.getString(CATT, "Science");
         String Diff = sharedpreferences.getString(DIFF, "Easy");
+        difficulty = Diff;
 
         if(Diff.equals("Easy")){
             START_TIME_IN_MILLIS = 30000;
@@ -147,8 +149,24 @@ public class QuestionActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            score+=50;
+//                            score+=50;
+//                            updateScore(score);
+                            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+
+                            if(difficulty.equals("Easy")){
+                               int temp = seconds * 2;
+                               score += temp;
+                            }
+                            else if(difficulty.equals("Medium")){
+                                int temp = seconds * 10;
+                                score += temp;
+                            }
+                            else if(difficulty.equals("Hard")){
+                                int temp = seconds * 110;
+                                score += temp;
+                            }
                             updateScore(score);
+
                         }
                     },300);
 
@@ -189,8 +207,25 @@ public class QuestionActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            score+=50;
+//                            score+=50;
+//                            updateScore(score);
+
+                            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+
+                            if(difficulty.equals("Easy")){
+                                int temp = seconds * 2;
+                                score += temp;
+                            }
+                            else if(difficulty.equals("Medium")){
+                                int temp = seconds * 10;
+                                score += temp;
+                            }
+                            else if(difficulty.equals("Hard")){
+                                int temp = seconds * 110;
+                                score += temp;
+                            }
                             updateScore(score);
+
 
                         }
                     },300);
@@ -234,8 +269,25 @@ public class QuestionActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            score+=50;
+//                            score+=50;
+//                            updateScore(score);
+
+                            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+
+                            if(difficulty.equals("Easy")){
+                                int temp = seconds * 2;
+                                score += temp;
+                            }
+                            else if(difficulty.equals("Medium")){
+                                int temp = seconds * 10;
+                                score += temp;
+                            }
+                            else if(difficulty.equals("Hard")){
+                                int temp = seconds * 110;
+                                score += temp;
+                            }
                             updateScore(score);
+
 
                         }
                     },300);
@@ -278,7 +330,23 @@ public class QuestionActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            score+=50;
+//                            score+=50;
+//                            updateScore(score);
+
+                            int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+
+                            if(difficulty.equals("Easy")){
+                                int temp = seconds * 2;
+                                score += temp;
+                            }
+                            else if(difficulty.equals("Medium")){
+                                int temp = seconds * 10;
+                                score += temp;
+                            }
+                            else if(difficulty.equals("Hard")){
+                                int temp = seconds * 110;
+                                score += temp;
+                            }
                             updateScore(score);
                         }
                     },300);
@@ -310,9 +378,6 @@ public class QuestionActivity extends AppCompatActivity {
         // thats why the check for empty is neccessary to prevent a crash but it also means when you start the game you
         // see the default text values not the first question.
 
-//        if(first != true) {
-//            startTimer();
-//        }
         startTimer();
 
         if(!qVector.isEmpty()) {
@@ -330,32 +395,6 @@ public class QuestionActivity extends AppCompatActivity {
             button4.setClickable(true);
             buttonNextQ.setClickable(false);
         }
-
-//        else if(first == true){
-//            beginButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    first = false;
-//                    beginButton.setVisibility(View.INVISIBLE);
-//                    refreshScreen();
-//                    questionText.setVisibility(View.VISIBLE);
-//                    button1.setVisibility(View.VISIBLE);
-//                    button2.setVisibility(View.VISIBLE);
-//                    button3.setVisibility(View.VISIBLE);
-//                    button4.setVisibility(View.VISIBLE);
-//                    buttonNextQ.setVisibility(View.VISIBLE);
-//                    mTextViewCountDown.setVisibility(View.VISIBLE);
-//                    player_score.setVisibility(View.VISIBLE);
-//                    current_score.setVisibility(View.VISIBLE);
-//                    //startTimer();
-//                    button1.setClickable(true);
-//                    button2.setClickable(true);
-//                    button3.setClickable(true);
-//                    button4.setClickable(true);
-//
-//                }
-//            });
-//        }
 
     }
 
