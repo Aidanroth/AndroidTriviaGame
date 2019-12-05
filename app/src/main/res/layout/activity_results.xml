@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".ResultsActivity">
 
 
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Your Score: "
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#6500B9"
+        android:textColor="#000000"
         android:textSize="64sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Still To Be Determined"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#6500B9"
+        android:textColor="#000000"
         android:textSize="84sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,10 +39,12 @@
 
     <Button
         android:id="@+id/menuButton"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="182dp"
         android:layout_height="72dp"
         android:layout_marginTop="368dp"
         android:onClick="onClickMenu"
+        android:textColor="#000000"
         android:text="Main Menu"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
