@@ -41,7 +41,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     ArrayList<Question> qVector = new ArrayList<>(50);
     int score = 0;
-    int numQuestions = 7;
+    int numQuestions = 5;
     int qNum = 0;
     Question question = new Question();
     String difficulty;
@@ -78,11 +78,11 @@ public class QuestionActivity extends AppCompatActivity {
 
         if(cat.equals("History")){
             cat = "history_questions";
-            numQuestions = 2;
+            numQuestions = 5;
         }
         else if(cat.equals("Science")){
             cat = "science_questions";
-            numQuestions = 7;
+            numQuestions = 5;
         }
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
@@ -478,6 +478,8 @@ public class QuestionActivity extends AppCompatActivity {
                 button2.setClickable(false);
                 button3.setClickable(false);
                 button4.setClickable(false);
+                buttonNextQ.setClickable(true);
+
 
             }
         }.start();
